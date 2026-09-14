@@ -14,6 +14,9 @@ assets/css/site.css     Tüm tasarım sistemi (tek dosya)
 assets/js/site.js       Dil, menü, reveal, geri sayım, sekmeler, HLS fragman oynatıcı, kamera saati, lightbox, kopyala
 assets/img/icons.svg    SVG ikon setinin kaynağı — her sayfanın <body> başına gömülü (<use href="#i-steam">)
 assets/img/grunge.png   Logo yıpranma maskesinin kaynağı — site.css içinde data URI olarak (--grunge)
+assets/img/Actual-Logo.png  Stüdyo logosunun orijinali (5906×5906, beyaz zemin) — aşağıdakilerin kaynağı
+assets/img/logo/        Logodan üretilenler: mark-160 (header), logo-480 (footer), bug-production-logo (basın kiti, şeffaf), apple-touch-icon
+favicon.ico             Favicon (16/32/48 px, logonun güveli paneli)
 assets/img/dm/          Dead Margin görselleri (Steam'den indirilmiş yerel kopyalar)
 assets/img/scan/        Düşman portreleri (şeffaf PNG)
 CNAME                   GitHub Pages özel alan adı (bugdevs.com)
@@ -29,7 +32,8 @@ Abiotic Factor, Deep Rock Galactic/Ghost Ship, Pacific Drive) çıkan ortak kura
 - **Oyundan türeyen tek güçlü renk** — logodaki fosfor yeşili (`--neon`); Anatolian Gambit için altın.
 - **Oyun içi arayüz dili** — REC/kamera karesi (fragman), ROKA-OS tarayıcı (düşmanlar), HUD kutuları (geri sayım).
 - **Fragman sitenin içinde** — Steam'in HLS akışı `hls.js` ile oynatılır; hata olursa Steam sayfası açılır.
-- **Logo** — `.sign` bileşeni: Big Shoulders Stencil + neon parıltı + yıpranma maskesi.
+- **Stüdyo logosu** — header'da logonun güveli paneli + yazı, footer ve basın kitinde logonun tamamı.
+- **Dead Margin logosu** — `.sign` bileşeni: Big Shoulders Stencil + neon parıltı + yıpranma maskesi.
   Gerçek logo PNG'si varsa `.sign` yerine `<img>` konabilir.
 
 Yazı tipleri (Google Fonts, Türkçe destekli): Big Shoulders (başlık), Big Shoulders Stencil (logo),

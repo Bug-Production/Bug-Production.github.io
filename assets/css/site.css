@@ -170,11 +170,7 @@ body[data-theme="ag"] .btn-acc:hover{background:#f6d99a;border-color:#f6d99a}
 .hdr.is-stuck::before{opacity:0}
 
 .brand{display:inline-flex;align-items:center;gap:.7rem;flex:none}
-.brand-mark{
-  width:36px;height:36px;border-radius:9px;display:grid;place-items:center;
-  background:var(--neon);color:#04140a;box-shadow:0 0 18px var(--neon-glow);
-}
-.brand-mark svg{width:24px;height:24px}
+.brand-mark{width:42px;height:42px;display:block;flex:none;border-radius:3px;box-shadow:0 0 16px rgba(0,255,78,.28)}
 .brand-name{font-family:var(--f-disp);font-weight:800;font-size:1.32rem;letter-spacing:.06em;text-transform:uppercase;line-height:.85;color:#fff}
 .brand-name small{display:block;font-family:var(--f-mono);font-size:.56rem;font-weight:500;letter-spacing:.34em;color:var(--muted);margin-top:.28rem}
 
@@ -419,6 +415,8 @@ body[data-theme="ag"] .btn-acc:hover{background:#f6d99a;border-color:#f6d99a}
 /* ---------- 12. FOOTER ---------- */
 .foot{border-top:1px solid var(--line);background:#050706;padding-top:clamp(3.5rem,7vw,5rem)}
 .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2.5rem}
+.foot-logo{display:inline-block}
+.foot-logo img{width:auto;height:118px;filter:drop-shadow(0 0 18px rgba(0,255,78,.16))}
 .foot-brand p{color:var(--muted);max-width:34ch;margin:1.1rem 0 1.2rem;font-size:.96rem}
 .foot-brand .socials{margin-left:-.5rem}
 .foot h4{font-family:var(--f-mono);font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:1rem}
