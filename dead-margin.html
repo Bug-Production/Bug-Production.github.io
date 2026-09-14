@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="tr" data-site-lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Dead Margin — Bug Production</title>
+<meta name="title-tr" content="Dead Margin — 1-4 Oyunculu Co-op Korku | Bug Production">
+<meta name="title-en" content="Dead Margin — 1-4 Player Co-op Horror | Bug Production">
+<meta name="description" content="Hayatta kalmak isteğe bağlıdır, kira ise zorunlu. Dead Margin 18 Eylül 2026'da Steam'de.">
+<meta name="desc-tr" content="Hayatta kalmak isteğe bağlıdır, kira ise zorunlu. Dead Margin 18 Eylül 2026'da Steam'de.">
+<meta name="desc-en" content="Survival is optional, rent is mandatory. Dead Margin arrives on Steam September 18, 2026.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dead Margin — Bug Production">
+<meta property="og:description" content="1-4 oyunculu acımasız bir co-op korku oyunu. 18 Eylül 2026 — Steam.">
+<meta property="og:image" content="https://bugdevs.com/assets/img/dm/keyart.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#070908">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Big+Shoulders:wght@700;800;900&family=Big+Shoulders+Stencil:wght@900&family=JetBrains+Mono:wght@500;700&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="preload" as="image" href="assets/img/dm/crow.jpg">
+<script>(function(){try{var l=localStorage.getItem('bp-lang');if(l==='en'){var r=document.documentElement;r.setAttribute('data-site-lang','en');r.setAttribute('lang','en');}}catch(e){}})();</script>
+</head>
+
+<body data-theme="dm">
+<!-- ikon seti (assets/img/icons.svg ile aynı) — file:// ile açılınca da çalışsın diye sayfaya gömülü -->
+<svg class="sprite" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false"><symbol id="i-bug" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><ellipse cx="12" cy="14" rx="5" ry="7"/><circle cx="12" cy="5.4" r="2.4"/><path d="M10.2 3.6 8 1.5M13.8 3.6 16 1.5M7 10 3 7.6M7 14H2.6M7 18 3 20.4M17 10l4-2.4M17 14h4.4M17 18l4 2.4M12 7.8V21"/></g></symbol><symbol id="i-steam" viewBox="0 0 24 24"><path fill="currentColor" d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></symbol><symbol id="i-discord" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.1.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 7 9-7"/></g></symbol><symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.53.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 12h15m-6-6 6 6-6 6"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></g></symbol><symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="8.5" y="8.5" width="12" height="12" rx="2"/><path d="M15.5 8.5V5a1.5 1.5 0 0 0-1.5-1.5H5A1.5 1.5 0 0 0 3.5 5v9A1.5 1.5 0 0 0 5 15.5h3.5"/></g></symbol><symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 4v13m-6-6 6 6 6-6M5 20.5h14"/></symbol></svg>
+
+<header class="hdr">
+  <a class="brand" href="index.html" aria-label="Bug Production">
+    <span class="brand-mark"><svg aria-hidden="true"><use href="#i-bug"/></svg></span>
+    <span class="brand-name"><span lang="en">Bug Production</span><small><span data-lang="tr">OYUN STÜDYOSU</span><span data-lang="en">GAME STUDIO</span></small></span>
+  </a>
+  <nav class="nav" aria-label="Ana menü">
+    <a href="#oyun"><span data-lang="tr">Oyun</span><span data-lang="en">Game</span></a>
+    <a href="#fragman"><span data-lang="tr">Fragman</span><span data-lang="en">Trailer</span></a>
+    <a href="#dusmanlar"><span data-lang="tr">Düşmanlar</span><span data-lang="en">Enemies</span></a>
+    <a href="#gorseller"><span data-lang="tr">Görseller</span><span data-lang="en">Media</span></a>
+    <a href="press.html"><span data-lang="tr">Basın</span><span data-lang="en">Press</span></a>
+  </nav>
+  <div class="hdr-end">
+    <div class="lang" role="group" aria-label="Dil / Language">
+      <button type="button" data-lang-btn="tr" aria-pressed="true">TR</button>
+      <button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn btn-acc btn-sm hdr-cta" href="https://store.steampowered.com/app/4509530/Dead_Margin/" target="_blank" rel="noopener">
+      <svg class="ico" aria-hidden="true"><use href="#i-steam"/></svg>
+      <span data-lang="tr">İstek listesi</span><span data-lang="en">Wishlist</span>
+    </a>
+    <button class="burger" aria-label="Menü" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<nav class="mnav" aria-label="Mobil menü">
+  <a href="#oyun"><span data-lang="tr">Oyun</span><span data-lang="en">Game</span></a>
+  <a href="#fragman"><span data-lang="tr">Fragman</span><span data-lang="en">Trailer</span></a>
+  <a href="#dusmanlar"><span data-lang="tr">Düşmanlar</span><span data-lang="en">Enemies</span></a>
+  <a href="#gorseller"><span data-lang="tr">Görseller</span><span data-lang="en">Media</span></a>
+  <a href="index.html"><span data-lang="tr">Stüdyo</span><span data-lang="en">Studio</span></a>
+  <a href="press.html"><span data-lang="tr">Basın</span><span data-lang="en">Press</span></a>
+  <div class="socials">
+    <a href="https://store.steampowered.com/app/4509530/Dead_Margin/" target="_blank" rel="noopener" aria-label="Steam"><svg aria-hidden="true"><use href="#i-steam"/></svg></a>
+    <a href="#" aria-label="Discord"><svg aria-hidden="true"><use href="#i-discord"/></svg></a>
+    <a href="#" aria-label="X"><svg aria-hidden="true"><use href="#i-x"/></svg></a>
+    <a href="#" aria-label="YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a>
+  </div>
+</nav>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero hero--game">
+  <div class="hero-media" aria-hidden="true"><img src="assets/img/dm/crow.jpg" alt="" fetchpriority="high"></div>
+  <div class="hero-shade" aria-hidden="true"></div>
+
+  <div class="wrap hero-in">
+    <p class="eyebrow"><span data-lang="tr"><span lang="en">Bug Production</span> — ilk oyun</span><span data-lang="en">Bug Production — first game</span></p>
+    <h1 class="sign sign-reflect" lang="en" style="margin-top:1.6rem"><span>Dead</span><span>Margin</span></h1>
+    <p class="hero-tag">
+      <span data-lang="tr">Hayatta kalmak isteğe bağlı. <em>Kira zorunlu.</em></span>
+      <span data-lang="en">Survival is optional. <em>Rent is mandatory.</em></span>
+    </p>
+    <p class="lead">
+      <span data-lang="tr">Ekibini kur, fısıldayarak hayatta kal, anomalilerden kaçın ve hurda topla. Topladığını satıp açgözlü müşteriye ödeme yap. <strong>Burada her şeyin bir fiyatı var. Özellikle de senin.</strong></span>
+      <span data-lang="en">Team up, whisper to survive, avoid anomalies and scavenge scrap. Sell it to pay the greedy customer. <strong>Out here, everything has a price. Especially you.</strong></span>
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-acc btn-lg" href="https://store.steampowered.com/app/4509530/Dead_Margin/" target="_blank" rel="noopener">
+        <svg class="ico" aria-hidden="true"><use href="#i-steam"/></svg>
+        <span data-lang="tr">İstek listesine ekle</span><span data-lang="en">Wishlist on Steam</span>
+      </a>
+      <a class="btn btn-lg" href="#fragman">
+        <svg class="ico" aria-hidden="true"><use href="#i-play"/></svg>
+        <span data-lang="tr">Fragmanı izle</span><span data-lang="en">Watch trailer</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hudbar" data-countdown>
+    <div class="wrap">
+      <div class="count" data-pending>
+        <p class="count-lbl"><span data-lang="tr">Çıkışa kalan</span><span data-lang="en">Launch in</span><b>18.09.2026</b></p>
+        <div class="clock">
+          <div><b data-unit="d">--</b><span data-lang="tr">GÜN</span><span data-lang="en">DAYS</span></div>
+          <div><b data-unit="h">--</b><span data-lang="tr">SAAT</span><span data-lang="en">HRS</span></div>
+          <div><b data-unit="m">--</b><span data-lang="tr">DK</span><span data-lang="en">MIN</span></div>
+          <div><b data-unit="s">--</b><span data-lang="tr">SN</span><span data-lang="en">SEC</span></div>
+        </div>
+      </div>
+      <p class="pill pill-live" data-released hidden><span data-lang="tr">Şimdi Steam'de</span><span data-lang="en">Out now on Steam</span></p>
+      <ul class="hud-meta">
+        <li class="pill"><b>1-4</b> <span data-lang="tr">oyuncu</span><span data-lang="en">players</span></li>
+        <li class="pill"><span data-lang="tr">Prosedürel</span><span data-lang="en">Procedural</span></li>
+        <li class="pill"><b>19</b> <span data-lang="tr">dil</span><span data-lang="en">languages</span></li>
+        <li class="pill">PC · <b>Steam</b></li>
+        <li class="pill"><b>18+</b></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FRAGMAN ============ -->
+<section class="sec" id="fragman">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <p class="eyebrow"><span data-lang="tr">Görüntü kayıtları</span><span data-lang="en">Footage</span></p>
+        <h2 class="h2"><span data-lang="tr">Kamera <em>kayıtta.</em></span><span data-lang="en">The camera <em>is rolling.</em></span></h2>
+      </div>
+      <p class="muted">
+        <span data-lang="tr">Steam'deki iki resmî fragman. Sesi aç — karanlıktakiler de dinliyor.</span>
+        <span data-lang="en">The two official trailers from Steam. Turn the sound up — the things in the dark are listening too.</span>
+      </p>
+    </div>
+
+    <div class="rv">
+      <div class="cam" data-cam data-selector="trailers"
+           data-src="https://video.akamai.steamstatic.com/store_trailers/4509530/1826945464/07ce3912b951b19852065c92e1739fa70b6f50c4/1788536585/hls_264_master.m3u8"
+           data-fallback="https://store.steampowered.com/app/4509530/Dead_Margin/">
+        <video playsinline preload="none"></video>
+        <img class="cam-poster crop-osd" src="assets/img/dm/keyart.jpg" alt="" loading="lazy">
+        <div class="cam-osd" aria-hidden="true">
+          <span class="c c1"></span><span class="c c2"></span><span class="c c3"></span><span class="c c4"></span>
+          <div class="tl"><span>REC<i></i></span><span data-cam-label>CAM 01</span></div>
+          <div class="tr">DEAD MARGIN</div>
+          <div class="bl"><span data-osd-time>00:00:00</span><span data-osd-date>&nbsp;</span></div>
+          <div class="br">STEAM · HD</div>
+        </div>
+        <button class="cam-start" type="button">
+          <span class="cam-btn"><svg aria-hidden="true"><use href="#i-play"/></svg></span>
+          <span class="sr"><span data-lang="tr">Fragmanı oynat</span><span data-lang="en">Play trailer</span></span>
+        </button>
+      </div>
+
+      <div class="cam-tabs" id="trailers" role="tablist" aria-label="Fragmanlar">
+        <button class="cam-tab" type="button" role="tab" aria-selected="true" data-label="CAM 01" data-poster="assets/img/dm/keyart.jpg" data-crop
+                data-trailer="https://video.akamai.steamstatic.com/store_trailers/4509530/1826945464/07ce3912b951b19852065c92e1739fa70b6f50c4/1788536585/hls_264_master.m3u8">
+          <img src="assets/img/dm/trailer1.jpg" alt="" loading="lazy">
+          <span><small>CAM 01</small><b><span data-lang="tr">Fragman 1</span><span data-lang="en">Trailer 1</span></b></span>
+        </button>
+        <button class="cam-tab" type="button" role="tab" aria-selected="false" data-label="CAM 02" data-poster="assets/img/dm/trailer2.jpg"
+                data-trailer="https://video.akamai.steamstatic.com/store_trailers/4509530/771800023/748503a186facfdbe5ab9c27a88d3a3c81d4b96d/1787262729/hls_264_master.m3u8">
+          <img src="assets/img/dm/trailer2.jpg" alt="" loading="lazy">
+          <span><small>CAM 02</small><b><span data-lang="tr">Fragman 2</span><span data-lang="en">Trailer 2</span></b></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OYUN — 7 SİSTEM ============ -->
+<section class="sec sec-alt" id="oyun">
+  <div class="wrap">
+    <div class="intro rv">
+      <div>
+        <p class="eyebrow"><span data-lang="tr"><span lang="en">Dead Margin</span> nedir?</span><span data-lang="en">What is Dead Margin?</span></p>
+        <h2 class="h2"><span data-lang="tr">Şirket seni seviyor. <em>Kiran ödendiği sürece.</em></span><span data-lang="en">The company loves you. <em>As long as rent is paid.</em></span></h2>
+      </div>
+      <p class="lead">
+        <span data-lang="tr">Her iniş yeni bir tesis, yeni bir kota ve yeni bir pazarlık demek. Oyunun yedi temel sistemi aynı soruya hizmet ediyor: <strong>Ne kadarını göze alırsın?</strong></span>
+        <span data-lang="en">Every descent means a new facility, a new quota and a new negotiation. The game's seven core systems all serve the same question: <strong>how much are you willing to risk?</strong></span>
+      </p>
+    </div>
+
+    <div class="feature rv" data-tabs>
+      <div class="f-list" role="tablist" aria-label="Sistemler">
+        <button class="f-tab" type="button" role="tab" id="t-f1" aria-controls="f1" aria-selected="true"><i>01</i><b><span data-lang="tr">Değişen zemin</span><span data-lang="en">Shifting ground</span></b></button>
+        <button class="f-tab" type="button" role="tab" id="t-f2" aria-controls="f2" aria-selected="false" tabindex="-1"><i>02</i><b><span data-lang="tr">Sessizliği dinlerler</span><span data-lang="en">They listen</span></b></button>
+        <button class="f-tab" type="button" role="tab" id="t-f3" aria-controls="f3" aria-selected="false" tabindex="-1"><i>03</i><b><span data-lang="tr">Ağırlık bir karardır</span><span data-lang="en">Weight is a choice</span></b></button>
+        <button class="f-tab" type="button" role="tab" id="t-f4" aria-controls="f4" aria-selected="false" tabindex="-1"><i>04</i><b><span data-lang="tr">Yalnız kalamazsın</span><span data-lang="en">Never alone</span></b></button>
+        <button class="f-tab" type="button" role="tab" id="t-f5" aria-controls="f5" aria-selected="false" tabindex="-1"><i>05</i><b><span data-lang="tr">Üsse dön, geliş</span><span data-lang="en">Return &amp; upgrade</span></b></button>
+        <button class="f-tab" type="button" role="tab" id="t-f6" aria-controls="f6" aria-selected="false" tabindex="-1"><i>06</i><b><span data-lang="tr">Pazarlık ve kota</span><span data-lang="en">Haggle &amp; quota</span></b></button>
+        <button class="f-tab" type="button" role="tab" id="t-f7" aria-controls="f7" aria-selected="false" tabindex="-1"><i>07</i><b><span data-lang="tr">Her yaratığın kuralı</span><span data-lang="en">Every creature's rule</span></b></button>
+      </div>
+
+      <article class="f-panel on" id="f1" role="tabpanel" aria-labelledby="t-f1">
+        <img src="assets/img/dm/elevator.jpg" alt="" loading="lazy">
+        <div class="f-body">
+          <p class="eyebrow" lang="en">Procedural generation</p>
+          <h3 class="h3"><span data-lang="tr">Değişen zemin</span><span data-lang="en">Shifting ground</span></h3>
+          <p><span data-lang="tr">Bastığın zemin sürekli değişiyor; bildiğini sandığın koridorlar her seferinde seni bambaşka çıkmaz sokaklara sürüklüyor. Karanlığın derinliklerindeki değerli hurdayı bulmak için her köşeyi ara — ama attığın her adımla gölgelerde yeni bir tehdit uyanıyor.</span>
+             <span data-lang="en">The ground beneath you keeps shifting; corridors you think you know lead to different dead ends every time. Search every corner for the valuable scrap hidden in the depths — but with every step, a new threat awakens in the shadows.</span></p>
+        </div>
+      </article>
+      <article class="f-panel" id="f2" role="tabpanel" aria-labelledby="t-f2">
+        <img src="assets/img/dm/corridor.jpg" alt="" loading="lazy">
+        <div class="f-body">
+          <p class="eyebrow" lang="en">Voxie — sound propagation</p>
+          <h3 class="h3"><span data-lang="tr">Sessizliği dinlerler</span><span data-lang="en">They listen to silence</span></h3>
+          <p><span data-lang="tr">Buradaki avcılar yalnızca gözleriyle avlanmaz. Telsizden fısıldadığın her kelime, panikle atılmış bir adım, elinden kayan metal bir parça… En ufak çıtırtı, karanlıktaki gözlerin sana dönmesine yeter.</span>
+             <span data-lang="en">The hunters here don't hunt with their eyes alone. Every word whispered over the radio, a panicked step, a piece of metal slipping from your hands… The slightest sound is enough to turn those eyes towards you.</span></p>
+        </div>
+      </article>
+      <article class="f-panel" id="f3" role="tabpanel" aria-labelledby="t-f3">
+        <img src="assets/img/dm/tram.jpg" alt="" loading="lazy">
+        <div class="f-body">
+          <p class="eyebrow" lang="en">Risk / reward</p>
+          <h3 class="h3"><span data-lang="tr">Ağırlık bir karardır</span><span data-lang="en">Weight is a decision</span></h3>
+          <p><span data-lang="tr">Derine indikçe ganimetin değeri katlanır; ceplerin doldukça yükün de ağırlaşır. Sınırını bil — biraz daha fazlasını istemek, topladığın her şeyi ve kendi hayatını tek bir saniyede kaybettirebilir.</span>
+             <span data-lang="en">The deeper you go, the more your loot is worth — and the heavier your load becomes. Know your limit: wanting just a little more can cost you everything you gathered, and your life, in a single second.</span></p>
+        </div>
+      </article>
+      <article class="f-panel" id="f4" role="tabpanel" aria-labelledby="t-f4">
+        <img src="assets/img/dm/chimp.jpg" alt="" loading="lazy">
+        <div class="f-body">
+          <p class="eyebrow" lang="en">1-4 player co-op</p>
+          <h3 class="h3"><span data-lang="tr">Yalnız hayatta kalamazsın</span><span data-lang="en">You can't survive alone</span></h3>
+          <p><span data-lang="tr">Ekibinle iletişimde kal, yükü adil paylaş, birlikte plan yap. İşler çığırından çıktığında en zor kararla yüzleşeceksin: yaralı arkadaşını sırtlayıp riski mi artıracaksın, yoksa onu karanlığa mı bırakacaksın?</span>
+             <span data-lang="en">Keep talking to your crew, share the load and plan together. When things spiral you'll face the hardest call: carry your wounded friend and raise the risk, or leave them to the dark?</span></p>
+        </div>
+      </article>
+      <article class="f-panel" id="f5" role="tabpanel" aria-labelledby="t-f5">
+        <img src="assets/img/dm/terminal.jpg" alt="" loading="lazy">
+        <div class="f-body">
+          <p class="eyebrow" lang="en">Base / crafting</p>
+          <h3 class="h3"><span data-lang="tr">Üsse dön, geliş</span><span data-lang="en">Return and upgrade</span></h3>
+          <p><span data-lang="tr">Ölümün kıyısından getirdiğin her parça kurtuluş biletin. Hurdayı üssünde işle, teknolojini geliştir, ekipmanını modifiye et. Gelişmezsen bir sonraki iniş son inişin olur.</span>
+             <span data-lang="en">Every part you bring back from the brink is a ticket to survival. Process scrap at your base, upgrade your tech and modify your gear. If you don't evolve, your next run is your last.</span></p>
+        </div>
+      </article>
+      <article class="f-panel" id="f6" role="tabpanel" aria-labelledby="t-f6">
+        <img src="assets/img/dm/crow.jpg" alt="" loading="lazy">
+        <div class="f-body">
+          <p class="eyebrow" lang="en">Economy</p>
+          <h3 class="h3"><span data-lang="tr">Pazarlık ve kota</span><span data-lang="en">Haggling and quota</span></h3>
+          <p><span data-lang="tr">Topladığın parçalar ancak doğru alıcıyı bulunca anlam kazanır. Müşterilerle sıkı pazarlık yap, en yüksek fiyata sat, kotanı zamanında öde. Yanlış bir teklif kazancını da, müşterinin güvenini de kaybettirebilir.</span>
+             <span data-lang="en">Salvage only matters once it finds the right buyer. Haggle hard, sell high and pay your quota on time. One wrong offer can cost you your profit — and that customer's trust.</span></p>
+        </div>
+      </article>
+      <article class="f-panel" id="f7" role="tabpanel" aria-labelledby="t-f7">
+        <img class="crop-osd" src="assets/img/dm/keyart.jpg" alt="" loading="lazy">
+        <div class="f-body">
+          <p class="eyebrow" lang="en">Enemy AI</p>
+          <h3 class="h3"><span data-lang="tr">Her yaratığın bir kuralı var</span><span data-lang="en">Every creature has a rule</span></h3>
+          <p><span data-lang="tr">Her yaratığın kendine has bir avlanma tarzı, benzersiz bir zayıf noktası ve çözmen gereken bir kuralı var. Bazıları ışığa çekilir, bazıları sese koşar. Bazen en büyük cesaret savaşmak değil, nefesini tutup gölgelerde kaybolmaktır.</span>
+             <span data-lang="en">Every creature has its own hunting style, a unique weakness and a rule you must solve. Some are drawn to light, some run towards sound. Sometimes true bravery isn't fighting — it's holding your breath and slipping away.</span></p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DÜŞMANLAR ============ -->
+<section class="sec" id="dusmanlar">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <p class="eyebrow"><span data-lang="tr">Kabusun yüzleri</span><span data-lang="en">Faces of the nightmare</span></p>
+        <h2 class="h2"><span data-lang="tr">Karanlıkta <em>düşünen avcılar.</em></span><span data-lang="en">Hunters that <em>think in the dark.</em></span></h2>
+      </div>
+      <p class="muted">
+        <span data-lang="tr">ROKA-OS tarayıcısından alınan dosyalar. Kadronun tamamı oyunda açılır; bazı kayıtlar hâlâ şifreli.</span>
+        <span data-lang="en">Files pulled from the ROKA-OS scanner. The full roster is discovered in game; some records are still encrypted.</span>
+      </p>
+    </div>
+
+    <div class="scanner rv" data-tabs>
+      <div class="scan-top" aria-hidden="true">
+        <b>ROKA-OS</b><span>/ <span data-lang="tr">anomali tarayıcı</span><span data-lang="en">anomaly scanner</span></span>
+        <span class="r"><span data-lang="tr">5 dosya açık · 2 şifreli</span><span data-lang="en">5 files open · 2 encrypted</span></span>
+      </div>
+
+      <div class="scan-stage">
+        <article class="dossier on" id="d1" role="tabpanel" aria-labelledby="t-d1">
+          <div class="d-pic"><img src="assets/img/scan/Puppet_Portrait.png" alt="Puppet" loading="lazy"></div>
+          <div class="d-info">
+            <p class="d-code">P-00 · <span data-lang="tr">anomali</span><span data-lang="en">anomaly</span></p>
+            <h3 class="d-name" lang="en">Puppet</h3>
+            <p class="d-sub"><span data-lang="tr">Gözlemci etkisi</span><span data-lang="en">Observer effect</span></p>
+            <p><span data-lang="tr">Kimse bakmıyorken inanılmaz bir hızla koşar. Bir kişi bakarsa yavaşlar; takımca odaklanırsanız korkunç bir pozda donup kalır. Tek zaafı gözlemci etkisi. Gözünüzü kırpmayın.</span>
+               <span data-lang="en">While nobody is looking, it runs at terrifying speed. One pair of eyes slows it down; focus as a team and it freezes in a horrible pose. The observer effect is its only weakness. Don't blink.</span></p>
+            <ul class="tags">
+              <li>0 <span data-lang="tr">göz → koşar</span><span data-lang="en">eyes → runs</span></li>
+              <li>1 → <span data-lang="tr">yavaşlar</span><span data-lang="en">slows</span></li>
+              <li>3+ → <span data-lang="tr">donar</span><span data-lang="en">freezes</span></li>
+            </ul>
+            <p class="threat"><span data-lang="tr">Tehdit</span><span data-lang="en">Threat</span> <i style="--t:5" aria-label="5/5"></i> 5/5</p>
+          </div>
+        </article>
+
+        <article class="dossier" id="d2" role="tabpanel" aria-labelledby="t-d2">
+          <div class="d-pic"><img src="assets/img/scan/Gulyabani_Portrait.png" alt="Gulyabani" loading="lazy"></div>
+          <div class="d-info">
+            <p class="d-code">G-01 · <span data-lang="tr">anomali</span><span data-lang="en">anomaly</span></p>
+            <h3 class="d-name">Gulyabani</h3>
+            <p class="d-sub"><span data-lang="tr">Seni hisseden</span><span data-lang="en">The one that feels you</span></p>
+            <p><span data-lang="tr">Sesinizi dinlemez; saklansanız bile sizi hisseder. Nerede olduğunuzu her zaman bilir ve mesafeye göre saldırı tarzını değiştirir.</span>
+               <span data-lang="en">It doesn't listen for sound; it feels you even when you hide. It always knows where you are and changes its attack style with distance.</span></p>
+            <ul class="tags">
+              <li><span data-lang="tr">Mutlak takip</span><span data-lang="en">Absolute tracking</span></li>
+              <li><span data-lang="tr">Ses dışı algı</span><span data-lang="en">Non-audio sense</span></li>
+            </ul>
+            <p class="threat"><span data-lang="tr">Tehdit</span><span data-lang="en">Threat</span> <i style="--t:5" aria-label="5/5"></i> 5/5</p>
+          </div>
+        </article>
+
+        <article class="dossier" id="d3" role="tabpanel" aria-labelledby="t-d3">
+          <div class="d-pic"><img src="assets/img/scan/Predator_Portrait.png" alt="Predator" loading="lazy"></div>
+          <div class="d-info">
+            <p class="d-code">Y-02 · <span data-lang="tr">sürü avcısı</span><span data-lang="en">pack hunter</span></p>
+            <h3 class="d-name"><span data-lang="tr">Yırtıcı</span><span data-lang="en">Predator</span></h3>
+            <p class="d-sub" lang="en">Predator</p>
+            <p><span data-lang="tr">Sürü halinde avlanır. Kalabalıksanız uzaktan izler; sayıca üstünlük kurduğunda ya da fazla yaklaştığınızda vahşice atlar.</span>
+               <span data-lang="en">It hunts in packs. While you're many, it watches from afar; once it outnumbers you — or you get too close — it lunges.</span></p>
+            <ul class="tags">
+              <li><span data-lang="tr">Sürü avcısı</span><span data-lang="en">Pack hunter</span></li>
+              <li lang="en">Stalk</li>
+              <li><span data-lang="tr">Pusu</span><span data-lang="en">Ambush</span></li>
+            </ul>
+            <p class="threat"><span data-lang="tr">Tehdit</span><span data-lang="en">Threat</span> <i style="--t:4" aria-label="4/5"></i> 4/5</p>
+          </div>
+        </article>
+
+        <article class="dossier" id="d4" role="tabpanel" aria-labelledby="t-d4">
+          <div class="d-pic"><img src="assets/img/scan/Pianist_Portrait.png" alt="Pianist" loading="lazy"></div>
+          <div class="d-info">
+            <p class="d-code">P-03 · <span data-lang="tr">anomali</span><span data-lang="en">anomaly</span></p>
+            <h3 class="d-name"><span data-lang="tr">Piyanist</span><span data-lang="en">The Pianist</span></h3>
+            <p class="d-sub"><span data-lang="tr">Melankolik kabus</span><span data-lang="en">A melancholic nightmare</span></p>
+            <p><span data-lang="tr">O piyano çaldıkça tüm düşmanlar sağırdır. Müzik kesilirse yer altına girer, tam altınızda belirir ve sizi havaya fırlatır. Üzerine gitme: müzik durur.</span>
+               <span data-lang="en">As long as the piano plays, every other enemy is deaf. If the music stops, it goes underground, surfaces right beneath you and throws you into the air. Don't approach: the music stops.</span></p>
+            <ul class="tags">
+              <li><span data-lang="tr">Müzik = güvenlik</span><span data-lang="en">Music = safety</span></li>
+              <li><span data-lang="tr">Sessizlik = ölüm</span><span data-lang="en">Silence = death</span></li>
+            </ul>
+            <p class="threat"><span data-lang="tr">Tehdit</span><span data-lang="en">Threat</span> <i style="--t:4" aria-label="4/5"></i> 4/5</p>
+          </div>
+        </article>
+
+        <article class="dossier" id="d5" role="tabpanel" aria-labelledby="t-d5">
+          <div class="d-pic"><img src="assets/img/scan/Facehugger_Portrait.png" alt="Facehugger" loading="lazy"></div>
+          <div class="d-info">
+            <p class="d-code">F-04 · <span data-lang="tr">sızma</span><span data-lang="en">infiltrator</span></p>
+            <h3 class="d-name" lang="en">Facehugger</h3>
+            <p class="d-sub"><span data-lang="tr">Tavandaki</span><span data-lang="en">The one on the ceiling</span></p>
+            <p><span data-lang="tr">Tavanda sessizce bekler. Altından geçtiğiniz an kafanıza yapışır. Sizi öldürürse bedeniniz ele geçirilir — takımınıza dönen bir düşmana dönüşürsünüz.</span>
+               <span data-lang="en">It waits silently on the ceiling. The moment you pass beneath, it latches onto your head. If it kills you, your body is possessed — you become an enemy turned against your own team.</span></p>
+            <ul class="tags">
+              <li><span data-lang="tr">Sızma</span><span data-lang="en">Infiltration</span></li>
+              <li><span data-lang="tr">Ele geçirme</span><span data-lang="en">Possession</span></li>
+              <li><span data-lang="tr">Dost ateşi</span><span data-lang="en">Friendly fire</span></li>
+            </ul>
+            <p class="threat"><span data-lang="tr">Tehdit</span><span data-lang="en">Threat</span> <i style="--t:4" aria-label="4/5"></i> 4/5</p>
+          </div>
+        </article>
+
+        <article class="dossier locked" id="d6" role="tabpanel" aria-labelledby="t-d6">
+          <div class="d-pic"><img src="assets/img/scan/Scavenger_Portrait.png" alt="" loading="lazy"></div>
+          <div class="d-info">
+            <p class="d-code">?-05 · <span data-lang="tr">sınıflandırılmış</span><span data-lang="en">classified</span></p>
+            <h3 class="d-name">???</h3>
+            <p class="d-sub"><span data-lang="tr">Dosya şifreli</span><span data-lang="en">File encrypted</span></p>
+            <p><span data-lang="tr">Bu kayıt için yeterli tarama verisi yok. Onunla ilk karşılaşan ekip bilgiyi getirecek — eğer geri dönebilirse.</span>
+               <span data-lang="en">Not enough scan data for this record. The first crew to meet it will bring the details back — if they make it back.</span></p>
+            <p class="locked-box" style="margin-top:1.4rem"><svg aria-hidden="true"><use href="#i-lock"/></svg><span data-lang="tr">Oyunda açılır</span><span data-lang="en">Unlocks in game</span></p>
+          </div>
+        </article>
+
+        <article class="dossier locked" id="d7" role="tabpanel" aria-labelledby="t-d7">
+          <div class="d-pic"><img src="assets/img/scan/Stalker_Portrait.png" alt="" loading="lazy"></div>
+          <div class="d-info">
+            <p class="d-code">?-06 · <span data-lang="tr">sınıflandırılmış</span><span data-lang="en">classified</span></p>
+            <h3 class="d-name">???</h3>
+            <p class="d-sub"><span data-lang="tr">Dosya şifreli</span><span data-lang="en">File encrypted</span></p>
+            <p><span data-lang="tr">Tarayıcı yalnızca bir siluet yakalayabildi. Kayıt, ilk temas raporu gelene kadar kapalı.</span>
+               <span data-lang="en">The scanner only caught a silhouette. The record stays closed until the first contact report comes in.</span></p>
+            <p class="locked-box" style="margin-top:1.4rem"><svg aria-hidden="true"><use href="#i-lock"/></svg><span data-lang="tr">Oyunda açılır</span><span data-lang="en">Unlocks in game</span></p>
+          </div>
+        </article>
+      </div>
+
+      <div class="roster" role="tablist" aria-label="Düşmanlar">
+        <button class="r-btn" type="button" role="tab" id="t-d1" aria-controls="d1" aria-selected="true"><img src="assets/img/scan/Puppet_Portrait.png" alt="" loading="lazy"><span lang="en">Puppet</span></button>
+        <button class="r-btn" type="button" role="tab" id="t-d2" aria-controls="d2" aria-selected="false" tabindex="-1"><img src="assets/img/scan/Gulyabani_Portrait.png" alt="" loading="lazy"><span>Gulyabani</span></button>
+        <button class="r-btn" type="button" role="tab" id="t-d3" aria-controls="d3" aria-selected="false" tabindex="-1"><img src="assets/img/scan/Predator_Portrait.png" alt="" loading="lazy"><span><span data-lang="tr">Yırtıcı</span><span data-lang="en">Predator</span></span></button>
+        <button class="r-btn" type="button" role="tab" id="t-d4" aria-controls="d4" aria-selected="false" tabindex="-1"><img src="assets/img/scan/Pianist_Portrait.png" alt="" loading="lazy"><span><span data-lang="tr">Piyanist</span><span data-lang="en">Pianist</span></span></button>
+        <button class="r-btn" type="button" role="tab" id="t-d5" aria-controls="d5" aria-selected="false" tabindex="-1"><img src="assets/img/scan/Facehugger_Portrait.png" alt="" loading="lazy"><span lang="en">Facehugger</span></button>
+        <button class="r-btn locked" type="button" role="tab" id="t-d6" aria-controls="d6" aria-selected="false" tabindex="-1"><img src="assets/img/scan/Scavenger_Portrait.png" alt="" loading="lazy"><span>???</span></button>
+        <button class="r-btn locked" type="button" role="tab" id="t-d7" aria-controls="d7" aria-selected="false" tabindex="-1"><img src="assets/img/scan/Stalker_Portrait.png" alt="" loading="lazy"><span>???</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GÖRSELLER ============ -->
+<section class="sec sec-alt" id="gorseller">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <p class="eyebrow"><span data-lang="tr">Ekran görüntüleri</span><span data-lang="en">Screenshots</span></p>
+        <h2 class="h2"><span data-lang="tr">Saha <em>görüntüleri.</em></span><span data-lang="en">Field <em>imagery.</em></span></h2>
+      </div>
+      <p class="muted"><span data-lang="tr">Büyütmek için bir görsele tıkla.</span><span data-lang="en">Click an image to enlarge.</span></p>
+    </div>
+
+    <div class="gallery rv">
+      <button class="shot" type="button" data-shot><img src="assets/img/dm/chimp.jpg" alt="Dead Margin — ekran görüntüsü 1" loading="lazy"></button>
+      <button class="shot" type="button" data-shot><img src="assets/img/dm/crow.jpg" alt="Dead Margin — ekran görüntüsü 2" loading="lazy"></button>
+      <button class="shot" type="button" data-shot><img src="assets/img/dm/terminal.jpg" alt="Dead Margin — ekran görüntüsü 3" loading="lazy"></button>
+      <button class="shot" type="button" data-shot><img src="assets/img/dm/elevator.jpg" alt="Dead Margin — ekran görüntüsü 4" loading="lazy"></button>
+      <button class="shot" type="button" data-shot><img src="assets/img/dm/tram.jpg" alt="Dead Margin — ekran görüntüsü 5" loading="lazy"></button>
+      <button class="shot" type="button" data-shot><img src="assets/img/dm/corridor.jpg" alt="Dead Margin — ekran görüntüsü 6" loading="lazy"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KÜNYE + TEKNOLOJİ ============ -->
+<section class="sec" id="kunye">
+  <div class="wrap duo">
+    <div class="rv">
+      <p class="eyebrow"><span data-lang="tr">Künye</span><span data-lang="en">Fact sheet</span></p>
+      <h2 class="h2"><span data-lang="tr">Oyun <em>bilgileri</em></span><span data-lang="en">Game <em>details</em></span></h2>
+      <dl class="facts">
+        <div><dt><span data-lang="tr">İsim</span><span data-lang="en">Title</span></dt><dd lang="en">Dead Margin</dd></div>
+        <div><dt><span data-lang="tr">Geliştirici</span><span data-lang="en">Developer</span></dt><dd lang="en">Bug Production</dd></div>
+        <div><dt><span data-lang="tr">Yayıncı</span><span data-lang="en">Publisher</span></dt><dd lang="en">Bug Production</dd></div>
+        <div><dt><span data-lang="tr">Çıkış</span><span data-lang="en">Release</span></dt><dd><span data-lang="tr">18 Eylül 2026</span><span data-lang="en">September 18, 2026</span></dd></div>
+        <div><dt><span data-lang="tr">Platform</span><span data-lang="en">Platform</span></dt><dd>PC — Steam</dd></div>
+        <div><dt><span data-lang="tr">Oyuncu</span><span data-lang="en">Players</span></dt><dd><span data-lang="tr">1-4 (tek oyunculu ve çevrimiçi co-op)</span><span data-lang="en">1-4 (single-player and online co-op)</span></dd></div>
+        <div><dt><span data-lang="tr">Tür</span><span data-lang="en">Genre</span></dt><dd><span data-lang="tr">Co-op korku, hayatta kalma, roguelite, prosedürel</span><span data-lang="en">Co-op horror, survival, roguelite, procedural</span></dd></div>
+        <div><dt><span data-lang="tr">Diller</span><span data-lang="en">Languages</span></dt><dd><span data-lang="tr">19 dil (Türkçe ve İngilizce dahil)</span><span data-lang="en">19 languages (including English and Turkish)</span></dd></div>
+        <div><dt><span data-lang="tr">Yaş</span><span data-lang="en">Rating</span></dt><dd><span data-lang="tr">18+ — yoğun şiddet, korku</span><span data-lang="en">18+ — intense violence, horror</span></dd></div>
+      </dl>
+    </div>
+
+    <div class="rv rv-d1">
+      <p class="eyebrow"><span data-lang="tr">Kaputun altı</span><span data-lang="en">Under the hood</span></p>
+      <h2 class="h2"><span data-lang="tr">Teknoloji</span><span data-lang="en">Technology</span></h2>
+      <div class="tech">
+        <article><i>VOXIE</i><b><span data-lang="tr">Fiziksel ses yayılımı</span><span data-lang="en">Physical sound propagation</span></b>
+          <p><span data-lang="tr">Düşen nesnenin hızına ve ağırlığına göre ses üretir; duvarlar ve mesafe bu sesi zayıflatır. Düşmanlar bu veriyi dinler.</span><span data-lang="en">Sound is generated from an object's speed and weight; walls and distance attenuate it. Enemies listen to that data.</span></p></article>
+        <article><i>NETCODE</i><b><span data-lang="tr">Sunucu otoriteli co&#8209;op</span><span data-lang="en">Server-authoritative co&#8209;op</span></b>
+          <p><span data-lang="tr">Netcode for GameObjects üzerinde host/client mimarisi, Unity Relay ve sesli iletişim.</span><span data-lang="en">Host/client architecture on Netcode for GameObjects, with Unity Relay and voice chat.</span></p></article>
+        <article><i>MAPGEN</i><b><span data-lang="tr">Prosedürel harita</span><span data-lang="en">Procedural maps</span></b>
+          <p><span data-lang="tr">Her inişte yeniden kurulan koridorlar ve odalar; el yapımı kurallarla sınırlanmış rastgelelik.</span><span data-lang="en">Corridors and rooms rebuilt on every descent — randomness bounded by handcrafted rules.</span></p></article>
+        <article><i>AI / FSM</i><b><span data-lang="tr">Durum makinesi yapay zekâ</span><span data-lang="en">State-machine AI</span></b>
+          <p><span data-lang="tr">Her düşman kendi devriye, araştırma, takip ve saldırı durumlarıyla çalışır.</span><span data-lang="en">Each enemy runs its own patrol, investigate, chase and attack states.</span></p></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SON ÇAĞRI ============ -->
+<section class="final">
+  <div class="final-bg" aria-hidden="true"><img class="crop-osd" src="assets/img/dm/keyart.jpg" alt="" loading="lazy"></div>
+  <div class="wrap rv">
+    <span class="sign sign-sm" lang="en" aria-hidden="true"><span>Dead</span><span>Margin</span></span>
+    <h2 class="h2"><span data-lang="tr">Vardiya <em>18 Eylül'de</em> başlıyor.</span><span data-lang="en">The shift starts <em>September 18.</em></span></h2>
+    <p class="lead">
+      <span data-lang="tr">Ekibini topla, fenerini şarj et, kiranı unutma.</span>
+      <span data-lang="en">Gather your crew, charge your flashlight, don't forget the rent.</span>
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-acc btn-lg" href="https://store.steampowered.com/app/4509530/Dead_Margin/" target="_blank" rel="noopener">
+        <svg class="ico" aria-hidden="true"><use href="#i-steam"/></svg>
+        <span data-lang="tr">İstek listesine ekle</span><span data-lang="en">Wishlist on Steam</span>
+      </a>
+      <a class="btn btn-lg" href="press.html"><span data-lang="tr">Basın kiti</span><span data-lang="en">Press kit</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html">
+          <span class="brand-mark"><svg aria-hidden="true"><use href="#i-bug"/></svg></span>
+          <span class="brand-name"><span lang="en">Bug Production</span><small><span data-lang="tr">OYUN STÜDYOSU</span><span data-lang="en">GAME STUDIO</span></small></span>
+        </a>
+        <p>
+          <span data-lang="tr">2025'te kurulmuş bağımsız oyun stüdyosu. Dead Margin — 18 Eylül 2026, Steam.</span>
+          <span data-lang="en">Independent game studio founded in 2025. Dead Margin — September 18, 2026 on Steam.</span>
+        </p>
+        <div class="socials">
+          <a href="https://store.steampowered.com/app/4509530/Dead_Margin/" target="_blank" rel="noopener" aria-label="Steam"><svg aria-hidden="true"><use href="#i-steam"/></svg></a>
+          <a href="#" aria-label="Discord"><svg aria-hidden="true"><use href="#i-discord"/></svg></a>
+          <a href="#" aria-label="X"><svg aria-hidden="true"><use href="#i-x"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4><span data-lang="tr">Oyunlar</span><span data-lang="en">Games</span></h4>
+        <ul>
+          <li><a href="dead-margin.html" lang="en">Dead Margin</a></li>
+          <li><a href="anatolian-gambit.html" lang="en">Anatolian Gambit</a></li>
+          <li><a href="https://store.steampowered.com/app/4509530/Dead_Margin/" target="_blank" rel="noopener">Steam ↗</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4><span data-lang="tr">Stüdyo</span><span data-lang="en">Studio</span></h4>
+        <ul>
+          <li><a href="index.html#studyo"><span data-lang="tr">Hakkımızda</span><span data-lang="en">About</span></a></li>
+          <li><a href="press.html"><span data-lang="tr">Basın kiti</span><span data-lang="en">Press kit</span></a></li>
+          <li><a href="index.html#iletisim"><span data-lang="tr">Topluluk</span><span data-lang="en">Community</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4><span data-lang="tr">İletişim</span><span data-lang="en">Contact</span></h4>
+        <ul>
+          <li><a href="mailto:iletisim@bugproduction.com">iletisim@bugproduction.com</a></li>
+          <li><a href="press.html#iletisim"><span data-lang="tr">Basın talepleri</span><span data-lang="en">Press requests</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span data-year>2026</span> <span lang="en">Bug Production</span> · Türkiye</span>
+      <span class="age"><b>18+</b><span data-lang="tr">Yoğun şiddet · Korku</span><span data-lang="en">Intense violence · Horror</span></span>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="Görsel">
+  <button class="close" type="button" aria-label="Kapat">×</button>
+  <img alt="">
+</div>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

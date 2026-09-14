@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr" data-site-lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Anatolian Gambit — Bug Production</title>
+<meta name="title-tr" content="Anatolian Gambit — Yapım Aşamasında | Bug Production">
+<meta name="title-en" content="Anatolian Gambit — In Development | Bug Production">
+<meta name="description" content="Anatolian Gambit, Bug Production'ın yapım aşamasındaki ikinci projesi. Duyuru yakında.">
+<meta name="desc-tr" content="Anatolian Gambit, Bug Production'ın yapım aşamasındaki ikinci projesi. Duyuru yakında.">
+<meta name="desc-en" content="Anatolian Gambit is Bug Production's second project, currently in development. Announcement soon.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Anatolian Gambit — Bug Production">
+<meta property="og:description" content="Yapım aşamasında. Duyuru yakında.">
+<meta name="theme-color" content="#0a0806">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Big+Shoulders:wght@700;800;900&family=Big+Shoulders+Stencil:wght@900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>(function(){try{var l=localStorage.getItem('bp-lang');if(l==='en'){var r=document.documentElement;r.setAttribute('data-site-lang','en');r.setAttribute('lang','en');}}catch(e){}})();</script>
+</head>
+
+<body data-theme="ag">
+<!-- ikon seti (assets/img/icons.svg ile aynı) — file:// ile açılınca da çalışsın diye sayfaya gömülü -->
+<svg class="sprite" width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false"><symbol id="i-bug" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><ellipse cx="12" cy="14" rx="5" ry="7"/><circle cx="12" cy="5.4" r="2.4"/><path d="M10.2 3.6 8 1.5M13.8 3.6 16 1.5M7 10 3 7.6M7 14H2.6M7 18 3 20.4M17 10l4-2.4M17 14h4.4M17 18l4 2.4M12 7.8V21"/></g></symbol><symbol id="i-steam" viewBox="0 0 24 24"><path fill="currentColor" d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"/></symbol><symbol id="i-discord" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.028C.533 9.046-.319 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.1 13.1 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.1.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.029 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 7 9-7"/></g></symbol><symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.53.85l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5Z"/></symbol><symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 12h15m-6-6 6 6-6 6"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></g></symbol><symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="8.5" y="8.5" width="12" height="12" rx="2"/><path d="M15.5 8.5V5a1.5 1.5 0 0 0-1.5-1.5H5A1.5 1.5 0 0 0 3.5 5v9A1.5 1.5 0 0 0 5 15.5h3.5"/></g></symbol><symbol id="i-down" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 4v13m-6-6 6 6 6-6M5 20.5h14"/></symbol></svg>
+
+<header class="hdr">
+  <a class="brand" href="index.html" aria-label="Bug Production">
+    <span class="brand-mark"><svg aria-hidden="true"><use href="#i-bug"/></svg></span>
+    <span class="brand-name"><span lang="en">Bug Production</span><small><span data-lang="tr">OYUN STÜDYOSU</span><span data-lang="en">GAME STUDIO</span></small></span>
+  </a>
+  <nav class="nav" aria-label="Ana menü">
+    <a href="index.html#oyunlar"><span data-lang="tr">Oyunlar</span><span data-lang="en">Games</span></a>
+    <a href="dead-margin.html" lang="en">Dead Margin</a>
+    <a href="anatolian-gambit.html" lang="en" aria-current="page">Anatolian Gambit</a>
+    <a href="index.html#studyo"><span data-lang="tr">Stüdyo</span><span data-lang="en">Studio</span></a>
+    <a href="press.html"><span data-lang="tr">Basın</span><span data-lang="en">Press</span></a>
+  </nav>
+  <div class="hdr-end">
+    <div class="lang" role="group" aria-label="Dil / Language">
+      <button type="button" data-lang-btn="tr" aria-pressed="true">TR</button>
+      <button type="button" data-lang-btn="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn btn-acc btn-sm hdr-cta" href="dead-margin.html" lang="en">Dead Margin</a>
+    <button class="burger" aria-label="Menü" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<nav class="mnav" aria-label="Mobil menü">
+  <a href="index.html#oyunlar"><span data-lang="tr">Oyunlar</span><span data-lang="en">Games</span></a>
+  <a href="dead-margin.html" lang="en">Dead Margin</a>
+  <a href="anatolian-gambit.html" lang="en">Anatolian Gambit</a>
+  <a href="index.html#studyo"><span data-lang="tr">Stüdyo</span><span data-lang="en">Studio</span></a>
+  <a href="press.html"><span data-lang="tr">Basın</span><span data-lang="en">Press</span></a>
+</nav>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero hero--seal">
+  <div class="seal-bg" aria-hidden="true">
+    <svg class="seal" viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width=".6">
+      <circle cx="100" cy="100" r="96" opacity=".45"/><circle cx="100" cy="100" r="88" opacity=".22"/>
+      <rect x="31" y="31" width="138" height="138"/><rect x="31" y="31" width="138" height="138" transform="rotate(45 100 100)"/>
+      <circle cx="100" cy="100" r="52" opacity=".6"/>
+      <rect x="66" y="66" width="68" height="68" transform="rotate(22.5 100 100)" opacity=".7"/>
+      <rect x="66" y="66" width="68" height="68" transform="rotate(67.5 100 100)" opacity=".7"/>
+      <circle cx="100" cy="100" r="16" opacity=".9"/>
+      <circle cx="100" cy="4" r="2" fill="currentColor" stroke="none"/><circle cx="100" cy="196" r="2" fill="currentColor" stroke="none"/>
+      <circle cx="4" cy="100" r="2" fill="currentColor" stroke="none"/><circle cx="196" cy="100" r="2" fill="currentColor" stroke="none"/>
+    </svg>
+  </div>
+
+  <div class="wrap hero-in">
+    <p class="pill pill-acc"><span data-lang="tr">Proje 02 · yapım aşamasında</span><span data-lang="en">Project 02 · in development</span></p>
+    <h1 class="band-title" lang="en">Anatolian <span>Gambit</span></h1>
+    <p class="lead">
+      <span data-lang="tr">Stüdyonun ikinci projesi şu anda geliştiriliyor. Tür, hikâye ve çıkış tarihi dâhil hiçbir detay <strong>henüz duyurulmadı</strong> — ilk resmî bilgi bu sayfada yayımlanacak.</span>
+      <span data-lang="en">The studio's second project is currently in development. No details — genre, story or release date — have been <strong>announced yet</strong>. The first official information will be published on this page.</span>
+    </p>
+    <div class="btn-row">
+      <!-- TODO: gerçek e-posta adresiyle değiştir -->
+      <a class="btn btn-acc btn-lg" href="mailto:iletisim@bugproduction.com?subject=Anatolian%20Gambit">
+        <svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg>
+        <span data-lang="tr">Duyurudan haberdar ol</span><span data-lang="en">Get notified</span>
+      </a>
+      <a class="btn btn-lg" href="#dosya"><span data-lang="tr">Proje dosyası</span><span data-lang="en">Project file</span></a>
+    </div>
+    <ul class="tags">
+      <li><span data-lang="tr">Durum: yapım aşamasında</span><span data-lang="en">Status: in development</span></li>
+      <li><span data-lang="tr">Çıkış: TBA</span><span data-lang="en">Release: TBA</span></li>
+      <li>Platform: PC</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ DOSYA ============ -->
+<section class="sec sec-alt" id="dosya">
+  <div class="wrap duo">
+    <div class="rv">
+      <p class="eyebrow"><span data-lang="tr">Proje dosyası</span><span data-lang="en">Project file</span></p>
+      <h2 class="h2"><span data-lang="tr">Bilinenler <em>ve bilinmeyenler.</em></span><span data-lang="en">What is known <em>and what is not.</em></span></h2>
+      <p class="lead">
+        <span data-lang="tr">Aşağıda yalnızca doğrulanmış bilgiler var. Karartılmış satırlar duyuruya kadar kapalı kalacak.</span>
+        <span data-lang="en">Only verified information is listed. The redacted lines stay closed until the announcement.</span>
+      </p>
+      <ol class="log" style="margin-top:2.6rem">
+        <li><time>2025</time><b><span data-lang="tr">Stüdyo kuruldu</span><span data-lang="en">Studio founded</span></b>
+          <p><span data-lang="tr">Bug Production kuruldu, Dead Margin'in geliştirilmesi başladı.</span><span data-lang="en">Bug Production is founded and Dead Margin enters development.</span></p></li>
+        <li class="now"><time>18.09.2026</time><b><span data-lang="tr"><span lang="en">Dead Margin</span> çıkışı</span><span data-lang="en">Dead Margin launch</span></b>
+          <p><span data-lang="tr">Stüdyonun ilk oyunu Steam'de yayımlanıyor.</span><span data-lang="en">The studio's first game ships on Steam.</span></p></li>
+        <li><time>TBA</time><b><span data-lang="tr"><span lang="en">Anatolian Gambit</span> duyurusu</span><span data-lang="en">Anatolian Gambit reveal</span></b>
+          <p><span data-lang="tr">İlk resmî bilgiler ve görseller bu sayfada.</span><span data-lang="en">The first official details and visuals, right here.</span></p></li>
+      </ol>
+    </div>
+
+    <div class="rv rv-d1">
+      <dl class="facts">
+        <div><dt><span data-lang="tr">Proje</span><span data-lang="en">Project</span></dt><dd lang="en">Anatolian Gambit</dd></div>
+        <div><dt><span data-lang="tr">Stüdyo</span><span data-lang="en">Studio</span></dt><dd lang="en">Bug Production</dd></div>
+        <div><dt><span data-lang="tr">Durum</span><span data-lang="en">Status</span></dt><dd><span data-lang="tr">Yapım aşamasında</span><span data-lang="en">In development</span></dd></div>
+        <div><dt><span data-lang="tr">Platform</span><span data-lang="en">Platform</span></dt><dd>PC</dd></div>
+        <div><dt><span data-lang="tr">Çıkış</span><span data-lang="en">Release</span></dt><dd>TBA</dd></div>
+        <div><dt><span data-lang="tr">Tür</span><span data-lang="en">Genre</span></dt><dd><span class="redact"><span data-lang="tr">duyurulmadı — sınıflandırılmış</span><span data-lang="en">unannounced — classified</span></span></dd></div>
+        <div><dt><span data-lang="tr">Dünya</span><span data-lang="en">Setting</span></dt><dd><span class="redact"><span data-lang="tr">duyurulmadı — sınıflandırılmış veri</span><span data-lang="en">unannounced — classified data</span></span></dd></div>
+        <div><dt><span data-lang="tr">Mod</span><span data-lang="en">Modes</span></dt><dd><span class="redact"><span data-lang="tr">bilgi kapalı</span><span data-lang="en">information sealed</span></span></dd></div>
+        <div><dt><span data-lang="tr">Oyuncu</span><span data-lang="en">Players</span></dt><dd><span class="redact"><span data-lang="tr">bilgi kapalı</span><span data-lang="en">information sealed</span></span></dd></div>
+      </dl>
+      <p class="muted mono" style="font-size:.72rem;letter-spacing:.12em;margin-top:1rem;text-transform:uppercase">
+        <span data-lang="tr">Karartılmış alanların üzerine gel</span><span data-lang="en">Hover the redacted fields</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BU ARADA: DEAD MARGIN ============ -->
+<section class="sec">
+  <div class="wrap">
+    <article class="promo rv">
+      <div class="promo-img" aria-hidden="true"><img class="crop-osd" src="assets/img/dm/keyart.jpg" alt="" loading="lazy"></div>
+      <div class="promo-txt">
+        <p class="eyebrow"><span data-lang="tr">Bu arada</span><span data-lang="en">Meanwhile</span></p>
+        <span class="sign sign-sm" lang="en" aria-hidden="true"><span>Dead</span><span>Margin</span></span>
+        <p class="lead">
+          <span data-lang="tr">Stüdyonun ilk oyunu 18 Eylül 2026'da Steam'de. 1-4 oyunculu co-op korku — hayatta kalmak isteğe bağlı, kira zorunlu.</span>
+          <span data-lang="en">The studio's first game hits Steam on September 18, 2026. 1-4 player co-op horror — survival is optional, rent is mandatory.</span>
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-acc" href="dead-margin.html"><span data-lang="tr">Oyunu keşfet</span><span data-lang="en">Explore the game</span> <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn" href="https://store.steampowered.com/app/4509530/Dead_Margin/" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-steam"/></svg> Steam</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html">
+          <span class="brand-mark"><svg aria-hidden="true"><use href="#i-bug"/></svg></span>
+          <span class="brand-name"><span lang="en">Bug Production</span><small><span data-lang="tr">OYUN STÜDYOSU</span><span data-lang="en">GAME STUDIO</span></small></span>
+        </a>
+        <p>
+          <span data-lang="tr">2025'te kurulmuş bağımsız oyun stüdyosu. Dead Margin — 18 Eylül 2026, Steam.</span>
+          <span data-lang="en">Independent game studio founded in 2025. Dead Margin — September 18, 2026 on Steam.</span>
+        </p>
+        <div class="socials">
+          <a href="https://store.steampowered.com/app/4509530/Dead_Margin/" target="_blank" rel="noopener" aria-label="Steam"><svg aria-hidden="true"><use href="#i-steam"/></svg></a>
+          <a href="#" aria-label="Discord"><svg aria-hidden="true"><use href="#i-discord"/></svg></a>
+          <a href="#" aria-label="X"><svg aria-hidden="true"><use href="#i-x"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg aria-hidden="true"><use href="#i-youtube"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4><span data-lang="tr">Oyunlar</span><span data-lang="en">Games</span></h4>
+        <ul>
+          <li><a href="dead-margin.html" lang="en">Dead Margin</a></li>
+          <li><a href="anatolian-gambit.html" lang="en">Anatolian Gambit</a></li>
+          <li><a href="https://store.steampowered.com/app/4509530/Dead_Margin/" target="_blank" rel="noopener">Steam ↗</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4><span data-lang="tr">Stüdyo</span><span data-lang="en">Studio</span></h4>
+        <ul>
+          <li><a href="index.html#studyo"><span data-lang="tr">Hakkımızda</span><span data-lang="en">About</span></a></li>
+          <li><a href="press.html"><span data-lang="tr">Basın kiti</span><span data-lang="en">Press kit</span></a></li>
+          <li><a href="index.html#iletisim"><span data-lang="tr">Topluluk</span><span data-lang="en">Community</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h4><span data-lang="tr">İletişim</span><span data-lang="en">Contact</span></h4>
+        <ul>
+          <li><a href="mailto:iletisim@bugproduction.com">iletisim@bugproduction.com</a></li>
+          <li><a href="press.html#iletisim"><span data-lang="tr">Basın talepleri</span><span data-lang="en">Press requests</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span data-year>2026</span> <span lang="en">Bug Production</span> · Türkiye</span>
+      <span><span data-lang="tr">Tüm hakları saklıdır</span><span data-lang="en">All rights reserved</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
