@@ -34,6 +34,7 @@
       "@type": "Organization",
       "@id": "https://bugdevs.com/#organization",
       "name": "Bug Production",
+      "alternateName": ["BugDevs", "Bug Devs", "BugDev", "bugdevs.com", "Bug Production Games", "Bug Production Oyun Stüdyosu"],
       "url": "https://bugdevs.com/",
       "logo": {
         "@type": "ImageObject",
@@ -41,21 +42,53 @@
         "width": 512,
         "height": 512
       },
-      "description": "Bug Production, 2025'te Türkiye'de kurulmuş bağımsız bir oyun stüdyosu.",
+      "image": "https://bugdevs.com/assets/img/logo/logo-512.png",
+      "description": "Bug Production, 2025'te Türkiye'de kurulmuş bağımsız bir oyun stüdyosu. İlk oyunu Dead Margin, 1-4 oyunculu co-op korku oyunu olarak 18 Eylül 2026'da Steam'de çıkıyor.",
       "email": "info@bugdevs.com",
       "foundingDate": "2025",
+      "foundingLocation": {"@type": "Place", "address": {"@type": "PostalAddress", "addressCountry": "TR"}},
       "address": {"@type": "PostalAddress", "addressCountry": "TR"},
+      "knowsAbout": ["Bağımsız oyun geliştirme", "Co-op korku oyunları", "Survival horror", "Indie game development", "Dead Margin", "Anatolian Gambit"],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "info@bugdevs.com",
+        "availableLanguage": ["Turkish", "English"]
+      },
       "sameAs": [
         "https://www.instagram.com/bugproductiontr/",
-        "https://discord.gg/FtvquKk4A"
+        "https://discord.gg/FtvquKk4A",
+        "https://github.com/Bug-Production",
+        "https://store.steampowered.com/app/4509530/Dead_Margin/"
       ]
     },
     {
       "@type": "WebSite",
       "@id": "https://bugdevs.com/#website",
       "name": "Bug Production",
+      "alternateName": ["BugDevs", "bugdevs.com"],
       "url": "https://bugdevs.com/",
       "inLanguage": ["tr", "en"],
+      "publisher": {"@id": "https://bugdevs.com/#organization"}
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://bugdevs.com/#webpage",
+      "url": "https://bugdevs.com/",
+      "name": "Bug Production — Bağımsız Oyun Stüdyosu",
+      "isPartOf": {"@id": "https://bugdevs.com/#website"},
+      "about": {"@id": "https://bugdevs.com/#organization"},
+      "primaryImageOfPage": "https://bugdevs.com/assets/img/dm/keyart.jpg",
+      "inLanguage": "tr"
+    },
+    {
+      "@type": "VideoGame",
+      "@id": "https://bugdevs.com/dead-margin.html#game",
+      "name": "Dead Margin",
+      "url": "https://bugdevs.com/dead-margin.html",
+      "image": "https://bugdevs.com/assets/img/dm/keyart.jpg",
+      "datePublished": "2026-09-18",
+      "author": {"@id": "https://bugdevs.com/#organization"},
       "publisher": {"@id": "https://bugdevs.com/#organization"}
     }
   ]
@@ -145,8 +178,9 @@
 
   <div class="wrap hero-in">
     <div class="hero-copy">
+      <h1 class="sr-only"><span data-lang="tr">Bug Production — bağımsız oyun stüdyosu (BugDevs)</span><span data-lang="en">Bug Production — independent game studio (BugDevs)</span></h1>
       <p class="eyebrow"><span data-lang="tr"><span lang="en">Bug Production</span> sunar</span><span data-lang="en">Bug Production presents</span></p>
-      <h1 class="sign sign-reflect" lang="en"><span>Dead</span><span>Margin</span></h1>
+      <p class="sign sign-reflect" lang="en"><span>Dead</span><span>Margin</span></p>
       <p class="hero-tag">
         <span data-lang="tr">Hayatta kalmak isteğe bağlı. <em>Kira zorunlu.</em></span>
         <span data-lang="en">Survival is optional. <em>Rent is mandatory.</em></span>

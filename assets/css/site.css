@@ -695,3 +695,6 @@ body[data-theme="ag"]{--bg:#0a0806;--bg-2:#0e0b08;--card:#120e0a}
   .hero--game .hudbar{position:relative}
   .hero--game .hero-in{padding-bottom:3rem}
 }
+
+/* ekran okuyucu / arama motoru için görsel olarak gizli başlık */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

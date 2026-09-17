@@ -31,9 +31,32 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://bugdevs.com/#organization",
+      "name": "Bug Production",
+      "alternateName": ["BugDevs", "Bug Devs", "BugDev", "bugdevs.com", "Bug Production Games"],
+      "url": "https://bugdevs.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://bugdevs.com/assets/img/logo/logo-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "email": "info@bugdevs.com",
+      "foundingDate": "2025",
+      "address": {"@type": "PostalAddress", "addressCountry": "TR"},
+      "sameAs": [
+        "https://www.instagram.com/bugproductiontr/",
+        "https://discord.gg/FtvquKk4A",
+        "https://github.com/Bug-Production",
+        "https://store.steampowered.com/app/4509530/Dead_Margin/"
+      ]
+    },
+    {
       "@type": "VideoGame",
       "@id": "https://bugdevs.com/dead-margin.html#game",
       "name": "Dead Margin",
+      "alternateName": ["DeadMargin", "Dead Margin oyunu"],
       "url": "https://bugdevs.com/dead-margin.html",
       "description": "1-4 oyunculu acımasız bir co-op korku oyunu. Karanlıkta hurda topla, fısıldayarak hayatta kal ve açgözlü müşteriye borcunu öde.",
       "image": "https://bugdevs.com/assets/img/dm/keyart.jpg",
@@ -45,13 +68,16 @@
         "https://bugdevs.com/assets/img/dm/chimp.jpg",
         "https://bugdevs.com/assets/img/dm/terminal.jpg"
       ],
-      "genre": ["Horror", "Survival", "Roguelite", "Co-op"],
+      "genre": ["Horror", "Survival Horror", "Co-op", "Online Co-Op", "Action Roguelike", "Roguelite", "First-Person", "PvE", "Indie"],
+      "keywords": "co-op korku oyunu, survival horror, 1-4 oyunculu, online co-op, roguelite, Türk yapımı oyun, indie horror, Bug Production, BugDevs",
       "gamePlatform": "PC",
+      "operatingSystem": "Windows",
       "applicationCategory": "Game",
+      "inLanguage": ["tr", "en"],
       "playMode": ["SinglePlayer", "CoOp", "MultiPlayer"],
       "numberOfPlayers": {"@type": "QuantitativeValue", "minValue": 1, "maxValue": 4},
       "datePublished": "2026-09-18",
-      "author": {"@type": "Organization", "@id": "https://bugdevs.com/#organization", "name": "Bug Production", "url": "https://bugdevs.com/"},
+      "author": {"@id": "https://bugdevs.com/#organization"},
       "publisher": {"@id": "https://bugdevs.com/#organization"},
       "sameAs": ["https://store.steampowered.com/app/4509530/Dead_Margin/"]
     },

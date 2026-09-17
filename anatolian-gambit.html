@@ -29,10 +29,50 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Bug Production", "item": "https://bugdevs.com/"},
-    {"@type": "ListItem", "position": 2, "name": "Anatolian Gambit", "item": "https://bugdevs.com/anatolian-gambit.html"}
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://bugdevs.com/#organization",
+      "name": "Bug Production",
+      "alternateName": ["BugDevs", "Bug Devs", "BugDev", "bugdevs.com", "Bug Production Games"],
+      "url": "https://bugdevs.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://bugdevs.com/assets/img/logo/logo-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "email": "info@bugdevs.com",
+      "foundingDate": "2025",
+      "address": {"@type": "PostalAddress", "addressCountry": "TR"},
+      "sameAs": [
+        "https://www.instagram.com/bugproductiontr/",
+        "https://discord.gg/FtvquKk4A",
+        "https://github.com/Bug-Production",
+        "https://store.steampowered.com/app/4509530/Dead_Margin/"
+      ]
+    },
+    {
+      "@type": "VideoGame",
+      "@id": "https://bugdevs.com/anatolian-gambit.html#game",
+      "name": "Anatolian Gambit",
+      "url": "https://bugdevs.com/anatolian-gambit.html",
+      "description": "Anatolian Gambit, Bug Production'ın yapım aşamasındaki ikinci oyunu. Duyuru yakında.",
+      "image": "https://bugdevs.com/assets/img/logo/logo-512.png",
+      "gamePlatform": "PC",
+      "applicationCategory": "Game",
+      "inLanguage": ["tr", "en"],
+      "creativeWorkStatus": "InDevelopment",
+      "author": {"@id": "https://bugdevs.com/#organization"},
+      "publisher": {"@id": "https://bugdevs.com/#organization"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Bug Production", "item": "https://bugdevs.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Anatolian Gambit", "item": "https://bugdevs.com/anatolian-gambit.html"}
+      ]
+    }
   ]
 }
 </script>

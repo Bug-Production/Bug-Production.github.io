@@ -29,10 +29,45 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Bug Production", "item": "https://bugdevs.com/"},
-    {"@type": "ListItem", "position": 2, "name": "Basın Kiti", "item": "https://bugdevs.com/press.html"}
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://bugdevs.com/#organization",
+      "name": "Bug Production",
+      "alternateName": ["BugDevs", "Bug Devs", "BugDev", "bugdevs.com", "Bug Production Games"],
+      "url": "https://bugdevs.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://bugdevs.com/assets/img/logo/logo-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "description": "Bug Production, 2025'te Türkiye'de kurulmuş bağımsız bir oyun stüdyosu.",
+      "email": "info@bugdevs.com",
+      "foundingDate": "2025",
+      "address": {"@type": "PostalAddress", "addressCountry": "TR"},
+      "sameAs": [
+        "https://www.instagram.com/bugproductiontr/",
+        "https://discord.gg/FtvquKk4A",
+        "https://github.com/Bug-Production",
+        "https://store.steampowered.com/app/4509530/Dead_Margin/"
+      ]
+    },
+    {
+      "@type": "AboutPage",
+      "@id": "https://bugdevs.com/press.html#webpage",
+      "url": "https://bugdevs.com/press.html",
+      "name": "Basın Kiti — Bug Production",
+      "about": {"@id": "https://bugdevs.com/#organization"},
+      "inLanguage": "tr"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Bug Production", "item": "https://bugdevs.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Basın Kiti", "item": "https://bugdevs.com/press.html"}
+      ]
+    }
   ]
 }
 </script>
@@ -142,6 +177,7 @@
               <div><dt><span data-lang="tr">Tip</span><span data-lang="en">Type</span></dt><dd><span data-lang="tr">Bağımsız oyun stüdyosu</span><span data-lang="en">Independent game studio</span></dd></div>
               <div><dt><span data-lang="tr">Oyunlar</span><span data-lang="en">Games</span></dt><dd>Dead Margin (2026)<br>Anatolian Gambit (TBA)</dd></div>
               <div><dt><span data-lang="tr">Teknoloji</span><span data-lang="en">Tech</span></dt><dd>Unity (URP), Netcode for GameObjects, Steamworks</dd></div>
+              <div><dt><span data-lang="tr">Web sitesi</span><span data-lang="en">Website</span></dt><dd><a href="https://bugdevs.com/" class="nocase">bugdevs.com</a></dd></div>
               <div><dt><span data-lang="tr">İletişim</span><span data-lang="en">Contact</span></dt><dd><a href="mailto:info@bugdevs.com">info@bugdevs.com</a></dd></div>
             </dl>
           </div>
