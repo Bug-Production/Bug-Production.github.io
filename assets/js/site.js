@@ -74,12 +74,16 @@
   }
 
   /* ---------- 5. GERİ SAYIM ---------- */
-  // Dead Margin — 18 Eylül 2026 (Türkiye saati)
-  var TARGET = new Date("2026-09-18T00:00:00+03:00").getTime();
+  // Dead Margin — 18 Eylül 2026, saat 20.00 (Türkiye saati, UTC+03)
+  var TARGET = new Date("2026-09-18T20:00:00+03:00").getTime();
+  var STEAM_URL = "https://store.steampowered.com/app/4509530/Dead_Margin/";
+  var LAUNCH_KEY = "bp-launch-seen";
   var clocks = $$("[data-countdown]");
+  var countTimer = null;
+  var launched = false;
   function pad(n) { return (n < 10 ? "0" : "") + n; }
-  function tick() {
-    var diff = TARGET - Date.now();
+
+  function paint(diff) {
     var out = diff <= 0;
     clocks.forEach(function (c) {
       $$("[data-released]", c).forEach(function (el) { el.hidden = !out; });
@@ -93,7 +97,69 @@
       set("s", pad(s % 60));
     });
   }
-  if (clocks.length) { tick(); setInterval(tick, 1000); }
+
+  // Çıkış anı: <html data-released> + bp:released olayı. live = sayaç göz önünde bitti.
+  function release(live) {
+    if (launched) return;
+    launched = true;
+    if (countTimer) { clearInterval(countTimer); countTimer = null; }
+    document.documentElement.setAttribute("data-released", "");
+    if (live) clocks.forEach(function (c) { c.classList.add("is-live"); });
+    document.dispatchEvent(new CustomEvent("bp:released", {
+      detail: { game: "Dead Margin", url: STEAM_URL, at: TARGET, live: !!live }
+    }));
+  }
+
+  function countTick(live) {
+    var diff = TARGET - Date.now();
+    paint(diff);
+    if (diff <= 0) release(live);
+  }
+
+  /* ---------- 5b. ÇIKIŞ DUYURUSU ---------- */
+  // bp:released tetiklenince oturumda bir kez (sayaç göz önünde bittiyse her zaman) görünür.
+  var launchBox = null;
+  var launchTimer = null;
+
+  function closeLaunch() {
+    try { sessionStorage.setItem(LAUNCH_KEY, "1"); } catch (e) {}
+    if (launchTimer) { clearTimeout(launchTimer); launchTimer = null; }
+    if (launchBox) { launchBox.remove(); launchBox = null; }
+  }
+
+  function openLaunch() {
+    if (launchBox) return;
+    launchBox = document.createElement("div");
+    launchBox.className = "launch";
+    launchBox.setAttribute("role", "status");
+    launchBox.innerHTML =
+      '<p class="eyebrow"><span data-lang="tr">Yayında</span><span data-lang="en">Live now</span></p>' +
+      '<p class="launch-txt">' +
+        '<span data-lang="tr"><b lang="en">Dead Margin</b> yayınlandı. Vardiya başladı — ışığını yanına al.</span>' +
+        '<span data-lang="en"><b lang="en">Dead Margin</b> is out. The shift has started — take your light with you.</span>' +
+      '</p>' +
+      '<div class="launch-btns">' +
+        '<a class="btn btn-acc btn-sm" href="' + STEAM_URL + '" target="_blank" rel="noopener">' +
+          '<svg class="ico" aria-hidden="true"><use href="#i-steam"/></svg>' +
+          '<span data-lang="tr">Steam\'de oyna</span><span data-lang="en">Play on Steam</span></a>' +
+        '<button type="button" class="btn btn-sm" data-launch-close>' +
+          '<span data-lang="tr">Kapat</span><span data-lang="en">Dismiss</span></button>' +
+      '</div>';
+    $("[data-launch-close]", launchBox).addEventListener("click", closeLaunch);
+    document.body.appendChild(launchBox);
+    launchTimer = setTimeout(closeLaunch, 14000);
+  }
+
+  document.addEventListener("bp:released", function (e) {
+    var live = !!(e.detail && e.detail.live);
+    var seen = false;
+    try { seen = sessionStorage.getItem(LAUNCH_KEY) === "1"; } catch (err) {}
+    if (live || !seen) openLaunch();
+  });
+
+  countTick(false);
+  // sayaç olan sayfada saniyede bir, diğerlerinde sadece "yayında" anını yakalamak için seyrek
+  if (!launched) countTimer = setInterval(function () { countTick(true); }, clocks.length ? 1000 : 30000);
 
   /* ---------- 6. KAMERA SAATİ (OSD) ---------- */
   var MONTHS = {

@@ -78,6 +78,11 @@ strong{font-weight:600;color:#fff}
 html[data-site-lang="tr"] [data-lang="en"],
 html[data-site-lang="en"] [data-lang="tr"]{display:none!important}
 
+/* çıkış öncesi / sonrası metin takası — site.js çıkış anında <html data-released> ekler */
+[data-rel-out]{display:none}
+html[data-released] [data-rel-out]{display:inline}
+html[data-released] [data-rel-pre]{display:none!important}
+
 .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
 [hidden]{display:none!important}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -302,6 +307,16 @@ body[data-theme="ag"] .btn-acc:hover{background:#f6d99a;border-color:#f6d99a}
 .clock span{display:block;font-family:var(--f-mono);font-size:.56rem;letter-spacing:.14em;color:var(--muted)}
 .hud-meta{display:flex;flex-wrap:wrap;gap:.45rem;margin-left:auto}
 .hudbar .btn{margin-left:.2rem}
+
+/* çıkış anı: sayacın yerini "yayında" bloğu alır, şerit bir kez yanıp söner */
+.count-out{flex-wrap:wrap;gap:.7rem 1.1rem}
+.count-out .count-lbl b{color:var(--neon);text-shadow:0 0 12px var(--neon-glow)}
+.hudbar.is-live{animation:hud-live 2.4s ease-out 1}
+@keyframes hud-live{
+  0%,18%,36%{border-top-color:var(--neon);box-shadow:inset 0 22px 44px -26px var(--neon-glow)}
+  9%,27%,100%{border-top-color:var(--line-2);box-shadow:inset 0 22px 44px -26px transparent}
+}
+@media (prefers-reduced-motion:reduce){.hudbar.is-live{animation:none}}
 
 /* ---------- 8. KAMERA KARESİ (fragman) ---------- */
 .cam{
@@ -633,6 +648,24 @@ body[data-theme="ag"]{--bg:#0a0806;--bg-2:#0e0b08;--card:#120e0a}
 .consent-btns .btn[aria-pressed="true"]{border-color:var(--acc);color:var(--acc)}
 @keyframes consent-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.consent{animation:none}}
+
+/* ---------- 19c. ÇIKIŞ DUYURUSU ---------- */
+/* geri sayım bittiği an (bp:released) beliren şerit; header (100) ve menünün (99) altında */
+.launch{
+  position:fixed;z-index:97;left:50%;transform:translateX(-50%);top:calc(var(--hdr) + .8rem);
+  width:min(34rem,calc(100% - 2 * var(--gut)));
+  padding:1.05rem 1.2rem 1.15rem;border-radius:var(--r);
+  background:rgba(8,12,10,.96);border:1px solid color-mix(in srgb,var(--acc) 45%,transparent);backdrop-filter:blur(10px);
+  box-shadow:0 24px 60px -18px rgba(0,0,0,.9),0 0 54px -20px var(--acc-glow);
+  animation:launch-in .5s cubic-bezier(.2,.8,.2,1);
+}
+.launch::before{content:"";position:absolute;left:1.2rem;right:1.2rem;top:-1px;height:2px;background:var(--acc);box-shadow:0 0 12px var(--acc-glow)}
+.launch-txt{margin:.6rem 0 1rem;color:#c4cfc5;font-size:.95rem;line-height:1.5}
+.launch-txt b{color:#fff}
+.launch-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.launch-btns .btn{flex:1 1 auto}
+@keyframes launch-in{from{opacity:0;transform:translate(-50%,-14px)}to{opacity:1;transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.launch{animation:none}}
 
 /* ---------- 20. REVEAL ---------- */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}

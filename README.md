@@ -109,7 +109,8 @@ Google'a hiçbir istek gitmez ve çerez yazılmaz.
 |---|---|
 | Renkler, tipografi, boşluklar | `assets/css/site.css` → `:root` bloğu |
 | Anatolian Gambit teması (altın) | `body[data-theme="ag"]` |
-| Çıkış geri sayımı | `assets/js/site.js` → `TARGET` |
+| Çıkış geri sayımı | `assets/js/site.js` → `TARGET` (18.09.2026 20.00 TSİ) |
+| Çıkış anı durumu | Sayacın bittiği an `<html data-released>` + `bp:released` olayı; metin takası `data-rel-pre` / `data-rel-out` |
 | Fragman adresleri | `data-src` / `data-trailer` (Steam `hls_264_master.m3u8`) |
 | Oyun eklemek | `index.html` → `#oyunlar` içine yeni `.band` |
 | Düşman eklemek | `dead-margin.html` → `.scan-stage` içine `.dossier`, `.roster` içine `.r-btn` |
@@ -160,6 +161,6 @@ Değiştirmek için: `grep -rn "discord.gg\|instagram.com\|info@bugdevs.com" *.h
 
 ## İçerik notu
 
-Dead Margin metinleri, çıkış tarihi (18 Eylül 2026), dil sayısı ve görseller
+Dead Margin metinleri, çıkış tarihi (18 Eylül 2026, 20.00 TSİ), dil sayısı ve görseller
 Steam mağaza sayfasından (App ID 4509530) alınmıştır. Stüdyo bilgileri:
 kuruluş 2025, iki proje. Uydurma istatistik (ekip sayısı, test oyuncusu vb.) kullanılmadı.
