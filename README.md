@@ -45,12 +45,14 @@ Barlow (metin), JetBrains Mono (etiket), VT323 (kamera ekranı).
 ## Yerel önizleme
 
 ```bash
-python -m http.server 8788
+npx serve .          # önerilen: /dead-margin gibi uzantısız adresleri GitHub Pages ile aynı çözer
+python -m http.server 8788   # alternatif: uzantısız adresi çözmez, /dead-margin.html yazman gerekir
 ```
 
-Sonra tarayıcıda `http://localhost:8788` adresini aç.
+Sonra tarayıcıda `http://localhost:3000` (serve) ya da `http://localhost:8788` adresini aç.
 
-> İkon seti ve logo maskesi sayfaya gömülü olduğu için site `index.html` çift tıklanarak (file://) açıldığında da doğru görünür.
+> İkon seti ve logo maskesi sayfaya gömülü olduğu için sayfalar file:// ile açıldığında da doğru görünür,
+> ama site içi bağlantılar kök-mutlak (`/dead-margin`) olduğundan gezinme yalnızca sunucu üzerinden çalışır.
 > `icons.svg` değişirse sayfalardaki gömülü `<svg class="sprite">` bloğunu da güncelle.
 
 > `404.html` her URL derinliğinde çalışsın diye kök-mutlak yollar (`/assets/...`) kullanır;
@@ -137,8 +139,10 @@ Değiştirmek için: `grep -rn "discord.gg\|instagram.com\|info@bugdevs.com" *.h
   - `index.html`: `Organization` (logo, e-posta, `sameAs`) + `WebSite` (Google'da görünen site adı)
   - `dead-margin.html`: `VideoGame` + `BreadcrumbList`
   - `anatolian-gambit.html`, `press.html`: `BreadcrumbList`
-- **Kanonik adresler `.html` uzantılıdır** (`https://bugdevs.com/dead-margin.html`), ana sayfa `https://bugdevs.com/`.
-  GitHub Pages `/dead-margin` adresini de aynı sayfayla açar; `canonical` etiketi Google'ı tek adrese yönlendirir.
+- **Kanonik adresler uzantısızdır** (`https://bugdevs.com/dead-margin`), ana sayfa `https://bugdevs.com/`.
+  Dosyalar diskte `.html` olarak durur; GitHub Pages uzantısız adresi aynı dosyayla açar (sondaki `/` çalışmaz: `/dead-margin/` → 404).
+  Site içi bağlantılar kök-mutlaktır (`href="/dead-margin"`), `canonical` / `og:url` / JSON-LD / `sitemap.xml` hepsi bu adresi kullanır.
+  Eski `.html` bağlantısıyla gelenlerde adres çubuğunu `site.js` içindeki `tidyUrl()` sessizce temizler.
 - `<title>` etiketi `title-tr` ile aynı tutulmalı (dil scripti başlığı zaten ona çeviriyor).
 - `404.html` bilerek `noindex`; sitemap'te yok.
 - Yapısal veriyi test et: https://search.google.com/test/rich-results

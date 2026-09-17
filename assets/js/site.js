@@ -9,6 +9,18 @@
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
+  /* ---------- 0. TEMİZ ADRES ---------- */
+  /* Eski ".html" bağlantısıyla gelen ziyaretçide adres çubuğunu uzantısız hâle
+     getirir. Sayfa yeniden yüklenmez: GitHub Pages /dead-margin ile
+     /dead-margin.html için aynı dosyayı sunar. */
+  (function tidyUrl() {
+    if (location.protocol === "file:" || !window.history || !history.replaceState) return;
+    var p = location.pathname;
+    if (!/\.html$/i.test(p) || /404\.html$/i.test(p)) return;
+    var clean = /index\.html$/i.test(p) ? p.replace(/index\.html$/i, "") : p.replace(/\.html$/i, "");
+    try { history.replaceState(history.state, "", clean + location.search + location.hash); } catch (e) {}
+  })();
+
   /* ---------- 1. DİL ---------- */
   var LANG_KEY = "bp-lang";
   function currentLang() { return document.documentElement.getAttribute("data-site-lang") === "en" ? "en" : "tr"; }
