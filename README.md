@@ -15,10 +15,13 @@ assets/js/site.js       Dil, menü, reveal, geri sayım, sekmeler, HLS fragman o
 assets/img/icons.svg    SVG ikon setinin kaynağı — her sayfanın <body> başına gömülü (<use href="#i-steam">)
 assets/img/grunge.png   Logo yıpranma maskesinin kaynağı — site.css içinde data URI olarak (--grunge)
 assets/img/Actual-Logo.png  Stüdyo logosunun orijinali (5906×5906, beyaz zemin) — aşağıdakilerin kaynağı
-assets/img/logo/        Logodan üretilenler: mark-160 (header), logo-480 (footer), bug-production-logo (basın kiti, şeffaf), apple-touch-icon
+assets/img/logo/        Logodan üretilenler: mark-160 (header), logo-480 (footer), bug-production-logo (basın kiti, şeffaf),
+                        logo-512 (kare, beyaz zemin — Google kuruluş logosu / paylaşım önizlemesi), apple-touch-icon
 favicon.ico             Favicon (16/32/48 px, logonun güveli paneli)
 assets/img/dm/          Dead Margin görselleri (Steam'den indirilmiş yerel kopyalar)
 assets/img/scan/        Düşman portreleri (şeffaf PNG)
+sitemap.xml             Google için site haritası (sayfalar + görseller)
+robots.txt              Tarama izni + sitemap adresi
 CNAME                   GitHub Pages özel alan adı (bugdevs.com)
 .nojekyll               GitHub Pages'in Jekyll işlemesini kapatır
 ```
@@ -86,6 +89,20 @@ Sayfa başlığı ve açıklaması `<meta name="title-tr|title-en|desc-tr|desc-e
 > Not: İngilizce özel isimlerde (Dead Margin, Anatolian Gambit) `lang="en"` kullanıldı;
 > aksi halde Türkçe büyük harf kuralı "i" harfini "İ" yapıyor.
 
+## Analitik ve çerez izni
+
+Google Analytics 4 (`G-NFTLWWQ6W1`) **yalnızca ziyaretçi izin verirse** yüklenir; izin verilmeden
+Google'a hiçbir istek gitmez ve çerez yazılmaz.
+
+- Her sayfanın `<head>` sonunda Google Consent Mode varsayılanı (`denied`) ve `bpAnalytics(on)` yükleyicisi var.
+  Kimlik değişirse beş HTML dosyasındaki `G-NFTLWWQ6W1` değerini güncelle.
+- İzin çubuğu `assets/js/site.js` → "12. ÇEREZ İZNİ" bölümünde oluşturulur (metinler de orada, TR/EN).
+  Kabul et / Reddet düğmeleri bilerek aynı görünümde.
+- Seçim `localStorage` → `bp-consent` (`granted` / `denied`). Seçim yoksa çubuk her sayfada görünür.
+- Footer'daki "Çerez tercihleri" (`[data-consent-open]`) çubuğu yeniden açar. Reddedilince
+  `_ga` çerezleri silinir ve o sayfadaki ölçüm durdurulur (`ga-disable-…`).
+- Test: tarayıcıda `localStorage.removeItem('bp-consent')` → sayfayı yenile.
+
 ## Özelleştirme
 
 | Ne | Nerede |
@@ -97,15 +114,48 @@ Sayfa başlığı ve açıklaması `<meta name="title-tr|title-en|desc-tr|desc-e
 | Oyun eklemek | `index.html` → `#oyunlar` içine yeni `.band` |
 | Düşman eklemek | `dead-margin.html` → `.scan-stage` içine `.dossier`, `.roster` içine `.r-btn` |
 
+## İletişim ve dış bağlantılar
+
+Sitede tıklanabilir dış bağlantı olarak **yalnızca** şunlar bulunur:
+
+| Ne | Adres | Nerede |
+|---|---|---|
+| E-posta | `info@bugdevs.com` | topluluk kartı, footer, basın kiti, Anatolian Gambit |
+| Discord | https://discord.gg/FtvquKk4A | topluluk kartı, mobil menü, footer |
+| Instagram | https://www.instagram.com/bugproductiontr/ | topluluk kartı, mobil menü, footer |
+| Steam | https://store.steampowered.com/app/4509530/Dead_Margin/ | istek listesi düğmeleri, footer |
+
+Değiştirmek için: `grep -rn "discord.gg\|instagram.com\|info@bugdevs.com" *.html`
+(ana sayfadaki JSON-LD `sameAs` listesi de bu adresleri içerir). Yeni bir dış bağlantı eklemeden önce bu listeyi güncelle.
+
+## Arama motoru (SEO)
+
+- **`sitemap.xml`** — dört sayfa + görseller. Sayfa eklenince buraya da ekle, içerik değişince `<lastmod>` tarihini güncelle.
+- **`robots.txt`** — her şeye izin verir ve sitemap'i gösterir.
+- **Her sayfanın `<head>`'i** — `canonical`, `robots`, Open Graph (`og:url`, `og:site_name`, görsel boyutları) ve JSON-LD:
+  - `index.html`: `Organization` (logo, e-posta, `sameAs`) + `WebSite` (Google'da görünen site adı)
+  - `dead-margin.html`: `VideoGame` + `BreadcrumbList`
+  - `anatolian-gambit.html`, `press.html`: `BreadcrumbList`
+- **Kanonik adresler `.html` uzantılıdır** (`https://bugdevs.com/dead-margin.html`), ana sayfa `https://bugdevs.com/`.
+  GitHub Pages `/dead-margin` adresini de aynı sayfayla açar; `canonical` etiketi Google'ı tek adrese yönlendirir.
+- `<title>` etiketi `title-tr` ile aynı tutulmalı (dil scripti başlığı zaten ona çeviriyor).
+- `404.html` bilerek `noindex`; sitemap'te yok.
+- Yapısal veriyi test et: https://search.google.com/test/rich-results
+
+**Google Search Console (bir kere yapılır):**
+
+1. https://search.google.com/search-console → *Mülk ekle* → **Alan adı** → `bugdevs.com`.
+2. Verilen `google-site-verification=…` TXT kaydını alan adı sağlayıcısında `@` için ekle, *Doğrula*.
+3. Sol menü → *Site haritaları* → `sitemap.xml` gönder.
+4. *URL denetimi* → `https://bugdevs.com/` → *Dizine eklenmeyi iste* (diğer sayfalar için de tekrarla).
+5. GitHub → Settings → Pages → **Enforce HTTPS** açık olmalı.
+
 ## Doldurulması gerekenler (TODO)
 
-1. **E-posta** — şu an her sayfada `iletisim@bugproduction.com` placeholder'ı var.
-   Gerçek adresle değiştir: `grep -rn "iletisim@bugproduction.com" *.html`
-2. **Sosyal medya** — footer'daki Discord / X / YouTube linkleri `href="#"`.
-3. **Konum** — künyede "Türkiye" yazıyor; şehir eklenecekse `press.html` ve footer.
-4. **Görseller** — Steam görselleri `assets/img/dm/` altına indirildi. Yüksek çözünürlüklü key art
+1. **Konum** — künyede "Türkiye" yazıyor; şehir eklenecekse `press.html` ve footer.
+2. **Görseller** — Steam görselleri `assets/img/dm/` altına indirildi. Yüksek çözünürlüklü key art
    veya logo PNG'si varsa aynı isimle değiştirmek yeterli (`keyart.jpg` şu an 1438×810).
-5. **Anatolian Gambit** — sayfa şu an bilinçli olarak "duyurulmadı" durumunda.
+3. **Anatolian Gambit** — sayfa şu an bilinçli olarak "duyurulmadı" durumunda.
    Detaylar netleştiğinde `anatolian-gambit.html` içindeki `.redact` alanları doldurulabilir.
 
 ## İçerik notu

@@ -1,7 +1,7 @@
 /* ==========================================================================
    BUG PRODUCTION — site.js (v2)
    Dil, header, mobil menü, reveal, geri sayım, sekmeler, fragman oynatıcı,
-   kamera saati, lightbox, kopyala düğmeleri
+   kamera saati, lightbox, kopyala düğmeleri, çerez izni
    ========================================================================== */
 (function () {
   "use strict";
@@ -274,6 +274,78 @@
 
   /* ---------- 11. YIL ---------- */
   $$("[data-year]").forEach(function (el) { el.textContent = String(new Date().getFullYear()); });
+
+  /* ---------- 12. ÇEREZ İZNİ ---------- */
+  // Google Analytics yalnızca "Kabul et" sonrası yüklenir (<head> içindeki bpAnalytics).
+  // Seçim localStorage'da tutulur; footer'daki [data-consent-open] düğmesi çubuğu yeniden açar.
+  var CONSENT_KEY = "bp-consent";
+  var consentBar = null;
+  var consentOpener = null;
+  function getConsent() { try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; } }
+
+  function clearGaCookies() {
+    document.cookie.split(";").forEach(function (c) {
+      var name = c.split("=")[0].trim();
+      if (!/^_ga/.test(name)) return;
+      document.cookie = name + "=; Max-Age=0; path=/";
+      document.cookie = name + "=; Max-Age=0; path=/; domain=" + location.hostname;
+    });
+  }
+
+  function closeConsent() {
+    if (!consentBar) return;
+    consentBar.remove();
+    consentBar = null;
+    if (consentOpener) { consentOpener.focus(); consentOpener = null; }
+  }
+
+  function setConsent(v) {
+    try { localStorage.setItem(CONSENT_KEY, v); } catch (e) {}
+    var on = v === "granted";
+    if (window.bpAnalytics) window.bpAnalytics(on);
+    if (!on) clearGaCookies();
+    closeConsent();
+  }
+
+  function openConsent(opener) {
+    if (!consentBar) {
+      consentBar = document.createElement("div");
+      consentBar.className = "consent";
+      consentBar.setAttribute("role", "region");
+      consentBar.setAttribute("aria-labelledby", "consent-title");
+      consentBar.innerHTML =
+        '<p class="eyebrow" id="consent-title"><span data-lang="tr">Çerez izni</span><span data-lang="en">Cookie consent</span></p>' +
+        '<p class="consent-txt">' +
+          '<span data-lang="tr">Ziyaret istatistikleri için Google Analytics çerezlerini kullanmak istiyoruz; bu veriler Google’ın yurt dışındaki sunucularında işlenir. Çerezler yalnızca izin verirsen yüklenir. Kararını istediğin zaman sayfanın altındaki “Çerez tercihleri” bağlantısından değiştirebilirsin.</span>' +
+          '<span data-lang="en">We’d like to use Google Analytics cookies for visitor statistics; this data is processed on Google’s servers abroad. They only load if you allow them. You can change your choice any time via “Cookie settings” at the bottom of the page.</span>' +
+        '</p>' +
+        '<div class="consent-btns">' +
+          '<button type="button" class="btn btn-sm" data-consent="granted"><span data-lang="tr">Kabul et</span><span data-lang="en">Accept</span></button>' +
+          '<button type="button" class="btn btn-sm" data-consent="denied"><span data-lang="tr">Reddet</span><span data-lang="en">Decline</span></button>' +
+        '</div>';
+      $$("[data-consent]", consentBar).forEach(function (b) {
+        b.addEventListener("click", function () { setConsent(b.getAttribute("data-consent")); });
+      });
+      document.body.appendChild(consentBar);
+    }
+    var cur = getConsent();
+    $$("[data-consent]", consentBar).forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.getAttribute("data-consent") === cur));
+    });
+    if (opener) {
+      consentOpener = opener;
+      $("[data-consent]", consentBar).focus();
+    }
+  }
+
+  $$("[data-consent-open]").forEach(function (b) {
+    b.addEventListener("click", function () { openConsent(b); });
+  });
+  document.addEventListener("keydown", function (e) {
+    // karar verilmişse Esc tercih çubuğunu kapatır; ilk ziyarette seçim zorunlu
+    if (e.key === "Escape" && consentBar && getConsent()) closeConsent();
+  });
+  if (!getConsent()) openConsent(null);
 
   setLang(currentLang());
 })();
